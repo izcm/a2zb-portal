@@ -1,4 +1,7 @@
 {
   "name": "@a2z/ui",
-  "private": true
+  "private": true,
+  "exports": {
+    "./global.css": "./global.css"
+  }
 }

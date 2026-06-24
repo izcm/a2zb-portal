@@ -24,102 +24,28 @@ const demos = [
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* NAVBAR */}
-      <div>
-        <nav
-          className="
-            navbar
-            flex items-center justify-between 
-            h-16 px-4 
-            border-b border-default
+    <div className="w-4xl flex flex-col justify-between mx-auto fade-in">
+      {/* HERO */}
+      <section
+        className="
+          flex flex-col justify-end gap-2 
+          h-[300px] pb-4 
+          border-b border-accent-weak 
           "
-        >
-          <span className="font-bold text-lg hero-kicker">A2Z Blocks</span>
-          <div className="flex gap-4 text-sm">
-            <a 
-              href="#" 
-              className="
-                px-3 py-1.5 rounded-lg
-                text-muted hover:text-primary
-                border border-soft hover:border-default
-                transition-all duration-200 ease-out
-                hover:bg-muted/40 hover:backdrop-blur-sm
-                hover:shadow-sm
-              "
-            >
-              About
-            </a>
-            <a 
-              href="#" 
-              className="
-                px-3 py-1.5 rounded-lg
-                text-muted hover:text-primary
-                border border-soft hover:border-default
-                transition-all duration-200 ease-out
-                hover:bg-muted/40 hover:backdrop-blur-sm
-                hover:shadow-sm
-              "
-            >
-              Contact
-            </a>
-          </div>
-        </nav>
-      </div>
+      >
+        <h1 className="hero-title glow py-2">a2zblocks</h1>
+        <p className="hero-kicker">web3 services</p>
+      </section>
 
-      <div className="flex flex-col grow ">
-        {/* HERO */}
-        <section className="flex justify-center section--cosmic fade-in border-b border-default bg-black/10">
-          <div
-            className=" 
-              flex flex-col lg:flex-row grow min-h-[400px]
-              items-center justify-center
-              max-w-4xl mt-8 lg:mt-0
-            "
-          >
-            <div className="lg:w-1/2">
-              <h1 className="hero-title glow py-2">A2Z Blocks</h1>
-              <p className="hero-kicker">End-to-end Web3 development.</p>
-              <p className="hero-kicker">From blueprint to bytecode.</p>
-              <button className="btn btn-primary mt-6">View Live Demos</button>
-            </div>
-
-            <div className="lg:w-1/2 text-center relative">
-              {/* BACKLIGHT BEHIND SVG */}
-              <div
-                className="
-                  pointer-events-none absolute right-[10%] top-1/2 -translate-y-1/2
-                  w-[420px] h-[420px] rounded-full
-                  bg-accent-weak opacity-20
-                  blur-[120px]
-                "
-              />
-
-              <img
-                src={blockSvg}
-                alt="block visual"
-                className="w-80 inline-block relative z-10"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* DEMOS */}
-        <section className="flex flex-col mx-auto max-w-4xl p-10 fade-in">
-          <h2 className="hero-kicker mb-4">Demos</h2>
-          <div
-            className="
-                grid grid-cols-1 md:grid-cols-3 gap-4
-                border border-default rounded-xl p-6
-                backdrop-blur-sm 
-              "
-          >
-            {demos.map((demo) => (
-              <DemoCard key={demo.id} {...demo} />
-            ))}
-          </div>
-        </section>
-      </div>
+      {/* DEMOS */}
+      <section className="flex flex-col bg-primary">
+        <h2 className="">Demos</h2>
+        <div>
+          {demos.map((demo) => (
+            <DemoCard key={demo.id} {...demo} />
+          ))}
+        </div>
+      </section>
 
       {/* FOOTER */}
       <footer

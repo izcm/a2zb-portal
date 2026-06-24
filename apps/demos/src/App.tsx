@@ -22,10 +22,6 @@ export const App = () => {
               <Route path="/:demoId" element={<DemoPage />} />
             </Routes>
           </main>
-
-          <footer className="text-xs text-muted py-6 text-center">
-            © 2025 A2Z Blocks — Humbly built.
-          </footer>
         </div>
       </QueryClientProvider>
     </WagmiProvider>
