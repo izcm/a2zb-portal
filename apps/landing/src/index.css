@@ -2,6 +2,14 @@
 @import "@a2zb/styles/base.css";
 
 body {
-  background: var(--bg-primary);
+  background: var(--color-primary);
   color: var(--text-primary);
+}
+
+.inactiveTab {
+  color: #49ca8a;
+}
+
+@theme {
+  --color-pop: #49ca8a;
 }

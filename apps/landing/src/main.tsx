@@ -7,7 +7,7 @@ document.documentElement.setAttribute("data-theme", "void");
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <main className="flex min-h-screen bg-black/40">
+    <main className="flex bg-black/60">
       <App />
     </main>
   </StrictMode>,

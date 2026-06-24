@@ -1,5 +1,6 @@
-import blockSvg from "@/assets/icons/blocks.svg";
 import { DemoCard } from "./components/DemoCard";
+import { useState } from "react";
+import { Tabs } from "./components/Tab";
 
 const demos = [
   {
@@ -23,23 +24,41 @@ const demos = [
 ] as const;
 
 export default function App() {
+  const tabs = ["demos", "contact"] as const;
+
+  const [activeTab, setActiveTab] = useState<"demos" | "contact">("demos");
+
   return (
-    <div className="w-4xl flex flex-col justify-between mx-auto fade-in">
+    <div
+      className="
+      w-5xl flex flex-col gap-4 justify-between 
+      mx-auto fade-in p-8"
+    >
       {/* HERO */}
       <section
         className="
-          flex flex-col justify-end gap-2 
-          h-[300px] pb-4 
-          border-b border-accent-weak 
+          flex flex-col justify-center gap-2 
+          h-[200px] bg-black
           "
       >
-        <h1 className="hero-title glow py-2">a2zblocks</h1>
+        <h1 className="hero-title">a2zblocks</h1>
         <p className="hero-kicker">web3 services</p>
       </section>
 
+      <Tabs
+        value={activeTab}
+        items={tabs}
+        classNames={{
+          container: "w-1/4 gap-4 px-2",
+          active: "border-b-0 border-t-2",
+          inactive:
+            "text-failure border-b-0 hover:border-t-1 hover:border-pop/60 border-pop text-pop",
+        }}
+        onChange={(v) => setActiveTab(v)}
+      />
+
       {/* DEMOS */}
-      <section className="flex flex-col bg-primary">
-        <h2 className="">Demos</h2>
+      <section className="flex flex-col bg-primary/60 ">
         <div>
           {demos.map((demo) => (
             <DemoCard key={demo.id} {...demo} />
