@@ -7,4 +7,9 @@ allowBuilds:
   keccak: true
   utf-8-validate: true
 minimumReleaseAgeExclude:
-  - '@a2zb/styles@1.0.0'
+  - '@a2zb/styles@1.0.3'
+  - '@a2zb/lib@1.0.0'
+  - '@a2zb/react@1.0.0'
+  - '@a2zb/react@1.0.1'
+  - '@a2zb/react@1.0.2'
+  - '@a2zb/react@1.0.3'

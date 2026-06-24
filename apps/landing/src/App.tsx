@@ -1,8 +1,18 @@
-import { DemoCard } from "./components/DemoCard";
 import { useState } from "react";
+
+import { ArrowList, ArrowRow } from "@a2zb/react";
+
+import { DemoCard } from "./components/cards/DemoCard";
 import { Tabs } from "./components/Tab";
+import { cn } from "./lib/cn";
 
 const demos = [
+  {
+    id: "dmrkt",
+    img: "architecture",
+    title: "d | mrkt – A deterministic market  simulation",
+    desc: "Generate a set of EIP-712 orders and replay ~1 month of trades.",
+  },
   {
     id: "miniNFT",
     img: "nft",
@@ -10,72 +20,78 @@ const demos = [
     desc: "Minimal NFT in pure yul.",
   },
   {
-    id: "swap-ui",
-    img: "architecture",
-    title: "On-Chain Ecosystem",
-    desc: "Get your testnet adapter today.",
-  },
-  {
     id: "onchain-voting",
     img: "dao",
     title: "On-Chain Voting",
     desc: "Lightweight DAO governance example.",
   },
-] as const;
+];
 
 export default function App() {
   const tabs = ["demos", "contact"] as const;
 
   const [activeTab, setActiveTab] = useState<"demos" | "contact">("demos");
+  const [selectedDemo, setSelectedDemo] = useState<string | undefined>(
+    undefined,
+  );
 
   return (
     <div
       className="
-      w-5xl flex flex-col gap-4 justify-between 
-      mx-auto fade-in p-8"
+      w-4xl min-h-screen flex flex-col gap-4 justify-between 
+      mx-auto fade-in p-8 bg-primary/60"
     >
       {/* HERO */}
       <section
         className="
           flex flex-col justify-center gap-2 
-          h-[200px] bg-black
+          h-[180px]
           "
       >
         <h1 className="hero-title">a2zblocks</h1>
-        <p className="hero-kicker">web3 services</p>
+        <p className="hero-kicker">web3 + full-stack services</p>
       </section>
 
-      <Tabs
-        value={activeTab}
-        items={tabs}
-        classNames={{
-          container: "w-1/4 gap-4 px-2",
-          active: "border-b-0 border-t-2",
-          inactive:
-            "text-failure border-b-0 hover:border-t-1 hover:border-pop/60 border-pop text-pop",
-        }}
-        onChange={(v) => setActiveTab(v)}
-      />
+      <section className="flex flex-1 flex-col gap-2">
+        <Tabs
+          value={activeTab}
+          items={tabs}
+          classNames={{
+            container: "w-1/4 gap-4 px-2",
+            active: "border-t-2 border-b-0",
+            inactive:
+              "hover:border-t-1 hover:border-pop/60 hover:border-t-1 border-pop text-pop",
+          }}
+          onChange={(v) => setActiveTab(v)}
+        />
 
-      {/* DEMOS */}
-      <section className="flex flex-col bg-primary/60 ">
-        <div>
-          {demos.map((demo) => (
-            <DemoCard key={demo.id} {...demo} />
-          ))}
+        {/* DEMOS */}
+        <div className="flex flex-col">
+          <ArrowList
+            items={demos}
+            getId={(demo) => demo.id}
+            selectedId={selectedDemo}
+            onSelect={(demo) => setSelectedDemo(demo.id)}
+            className={"flex flex-col gap-4"}
+          >
+            {({ item: demo, isSelected, onSelect }) => (
+              <ArrowRow
+                key={demo.id}
+                isSelected={isSelected}
+                onSelect={onSelect}
+                className={cn(
+                  // default
+                  !isSelected && "hover:bg-white/2",
+                  // selected
+                  isSelected && "border-2 border-accent-weak/40 rounded-lg",
+                )}
+              >
+                <DemoCard key={demo.id} {...demo} />
+              </ArrowRow>
+            )}
+          </ArrowList>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer
-        className="
-          flex flex-col items-center justify-center h-16 gap-1
-          border-t border-default text-xs text-neutral-500
-        "
-      >
-        <p>© 2025 A2Z Blocks. All rights reserved.</p>
-        <p>Humbly built. Rigorously optimized.</p>
-      </footer>
     </div>
   );
 }
