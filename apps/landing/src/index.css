@@ -6,10 +6,32 @@ body {
   color: var(--text-primary);
 }
 
-.inactiveTab {
-  color: #49ca8a;
-}
-
 @theme {
   --color-pop: #49ca8a;
+
+  /* tech */
+  --color-tech-node: #49ca8a;
+  --color-tech-mongo: #49ca8a;
+  --color-tech-docker: #66b6ff;
+  --color-tech-fastify: #b8bfd6;
+  --color-tech-foundry: #d9b36a;
+
+  --color-tech-typescript: #79a8ff;
+  --color-tech-react: #7fdfff;
+  --color-tech-solidity: #b9bfd6;
+  --color-tech-ethereum: #a58cff;
+  --color-tech-bash: #8fd4a8;
+
+  /* social */
+  --color-youtube: #ff5c73;
+}
+
+.btn-extra {
+  color: var(--accent-weak) !important;
+  border-color: color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+.btn-extra:hover {
+  color: var(--accent) !important;
+  border-color: color-mix(in oklab, var(--accent) 45%, transparent);
 }

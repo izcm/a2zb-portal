@@ -3,29 +3,9 @@ import { useState } from "react";
 import { ArrowList, ArrowRow } from "@a2zb/react";
 
 import { DemoCard } from "./components/cards/DemoCard";
-import { Tabs } from "./components/Tab";
+import { Tabs } from "./components/Tabs";
+import { demos } from "./data/demos";
 import { cn } from "./lib/cn";
-
-const demos = [
-  {
-    id: "dmrkt",
-    img: "architecture",
-    title: "d | mrkt – A deterministic market  simulation",
-    desc: "Generate a set of EIP-712 orders and replay ~1 month of trades.",
-  },
-  {
-    id: "miniNFT",
-    img: "nft",
-    title: "YUL MiniNFT",
-    desc: "Minimal NFT in pure yul.",
-  },
-  {
-    id: "onchain-voting",
-    img: "dao",
-    title: "On-Chain Voting",
-    desc: "Lightweight DAO governance example.",
-  },
-];
 
 export default function App() {
   const tabs = ["demos", "contact"] as const;
@@ -86,7 +66,7 @@ export default function App() {
                   isSelected && "border-2 border-accent-weak/40 rounded-lg",
                 )}
               >
-                <DemoCard key={demo.id} {...demo} />
+                <DemoCard {...demo} onSelectDemo={setSelectedDemo} />
               </ArrowRow>
             )}
           </ArrowList>
