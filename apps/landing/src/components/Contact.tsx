@@ -28,8 +28,8 @@ const ContactCard = ({ href, icon, platform, handle }: ContactCardProps) => (
       {icon}
     </div>
 
-    <div className="flex flex-col items-start text-left">
-      <span className="w-full text-left text-xs text-neutral-500 leading-none">
+    <div className="flex flex-col items-start gap-1">
+      <span className="w-full text-left text-xs text-muted leading-none">
         {platform}
       </span>
       <span className="w-full text-left text-sm text-neutral-200 leading-tight font-medium">
@@ -48,16 +48,10 @@ export const Contact = () => (
       handle="placeholder"
     />
     <ContactCard
-      href="https://x.com/placeholder"
-      icon={<SiIcon icon={siX} />}
-      platform="X"
-      handle="@placeholder"
-    />
-    <ContactCard
       href="mailto:placeholder@example.com"
       icon={<SiIcon icon={siGmail} />}
       platform="Email"
-      handle="placeholder@example.com"
+      handle="izcm@a2zb.com"
     />
   </div>
 );

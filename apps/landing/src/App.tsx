@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div
       className="
-      w-4xl min-h-screen flex flex-col gap-4 justify-between 
+      max-w-4xl min-h-screen flex flex-col gap-4 justify-between 
       mx-auto fade-in p-8 bg-primary/60"
     >
       {/* HERO */}

@@ -19,21 +19,21 @@ export const DemoCard = ({
   return (
     <div
       className="
-        flex gap-4
+        flex flex-col sm:flex-row gap-8
         border border-white/5 rounded-lg p-4
         cursor-pointer bg-white/3
       "
     >
       {/* TEXT INFO (LEFT) */}
       <div className="flex flex-col flex-1 text-start">
-        <h3 className="text-white tracking-tight my-1">{title}</h3>
+        <h3 className="text-white tracking-tight mb-2">{title}</h3>
 
         {/* DESCRIPTION */}
-        <p className="flex-1 text-neutral-400 text-sm leading-relaxed mb-4">
+        <p className="flex-1 text-neutral-400 text-sm leading-relaxed">
           {desc.split("\n").map((line, i) => (
             <span key={i}>
               {line}
-              <br />
+              <div className="h-2" />
             </span>
           ))}
         </p>
@@ -41,7 +41,7 @@ export const DemoCard = ({
         {/* BUILD WITH */}
         {composedOf && (
           <p className="text-xs text-neutral-500">
-            built with:{" "}
+            composed of:{" "}
             {composedOf.map((demoId, i) => (
               <span key={demoId}>
                 <button
@@ -63,7 +63,7 @@ export const DemoCard = ({
       </div>
 
       {/* LINKS & TOOL-BADGES (RIGHT) */}
-      <div className="flex flex-col justify-between gap-8 w-1/3">
+      <div className="flex flex-col justify-between gap-8 px-1 sm:w-1/3">
         {/* TOOLS */}
         <div className="grid grid-cols-4 gap-2">
           {sortTools(tools)
@@ -74,7 +74,7 @@ export const DemoCard = ({
         </div>
 
         {/* LINKS */}
-        <div className="flex flex-col gap-2 px-2">
+        <div className="flex flex-col gap-2">
           {extraLinks?.map((link) => (
             <IconLink
               key={link.label}

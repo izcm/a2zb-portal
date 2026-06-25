@@ -10,7 +10,7 @@ export type DemoLink = {
 
 export type DemoIds =
   | "dmrkt"
-  | "marketplace-sim"
+  | "marketplace-simulation"
   | "nft-indexer"
   | "trading-terminal"
   | "miniNFT";
@@ -69,7 +69,7 @@ export const demos: Demo[] = [
     title: "d | mrkt – A deterministic marketplace simulation",
     desc: "Generate a set of EIP-712 orders and replay ~1 month of trades.\n Fully dockerized + single command setup.",
     repoLink: "https://github.com/izcm/dmrkt-demo",
-    composedOf: ["marketplace-sim", "nft-indexer", "trading-terminal"],
+    composedOf: ["marketplace-simulation", "nft-indexer", "trading-terminal"],
     extraLinks: [
       { label: "watch walkthrough", icon: `${iconPaths.links}/youtube.svg` },
     ],
@@ -86,7 +86,7 @@ export const demos: Demo[] = [
     ],
   },
   {
-    id: "marketplace-sim",
+    id: "marketplace-simulation",
     title: "Marketplace Simulation",
     desc: "Generates and replays EIP-712 signed orders against an on-chain marketplace contract.",
     repoLink: "https://github.com/izcm/dmrkt-demo",
