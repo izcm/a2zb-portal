@@ -7,8 +7,11 @@ document.documentElement.setAttribute("data-theme", "void");
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <main className="flex min-h-screen bg-black/60">
+    <main className="flex flex-col min-h-screen bg-black/60">
       <App />
+      <footer className="py-6 text-center text-xs text-muted bg-primary/60">
+        © {new Date().getFullYear()} a2zblocks
+      </footer>
     </main>
   </StrictMode>,
 );

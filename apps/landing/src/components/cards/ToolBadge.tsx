@@ -10,11 +10,11 @@ export const ToolBadge = ({ name, icon }: ToolBadgeProps) => (
         flex items-center justify-center
         w-12 h-12
         rounded-full
-        bg-black/40 border border-soft
+        bg-black/40 border border-soft/16
       "
     >
       {icon ? (
-        <img src={icon} alt={name} className="w-3/4 h-3/4 object-contain" />
+        <i className={`devicon-${icon}-plain text-2xl`}></i>
       ) : (
         <span className="text-lg font-semibold text-white">
           {name[0].toUpperCase()}

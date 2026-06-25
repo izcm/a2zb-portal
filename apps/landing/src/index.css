@@ -1,6 +1,26 @@
 @import "@a2zb/styles";
 @import "@a2zb/styles/base.css";
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme="void"] {
+  --accent: #5a5fcc;
+  --accent-weak: rgba(90, 95, 204, 0.5);
+  --accent-strong: #8088e8;
+}
+
 body {
   background: var(--color-primary);
   color: var(--text-primary);

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowList, ArrowRow } from "@a2zb/react";
 
 import { DemoCard } from "./components/cards/DemoCard";
+import { Contact } from "./components/Contact";
 import { Tabs } from "./components/Tabs";
 import { demos } from "./data/demos";
 import { cn } from "./lib/cn";
@@ -45,32 +46,33 @@ export default function App() {
           onChange={(v) => setActiveTab(v)}
         />
 
-        {/* DEMOS */}
-        <div className="flex flex-col">
-          <ArrowList
-            items={demos}
-            getId={(demo) => demo.id}
-            selectedId={selectedDemo}
-            onSelect={(demo) => setSelectedDemo(demo.id)}
-            className={"flex flex-col gap-4"}
-          >
-            {({ item: demo, isSelected, onSelect }) => (
-              <ArrowRow
-                key={demo.id}
-                isSelected={isSelected}
-                onSelect={onSelect}
-                className={cn(
-                  // default
-                  !isSelected && "hover:bg-white/2",
-                  // selected
-                  isSelected && "border-2 border-accent-weak/40 rounded-lg",
-                )}
-              >
-                <DemoCard {...demo} onSelectDemo={setSelectedDemo} />
-              </ArrowRow>
-            )}
-          </ArrowList>
-        </div>
+        {activeTab === "contact" && <Contact />}
+
+        {activeTab === "demos" && (
+          <div className="flex flex-col">
+            <ArrowList
+              items={demos}
+              getId={(demo) => demo.id}
+              selectedId={selectedDemo}
+              onSelect={(demo) => setSelectedDemo(demo.id)}
+              className={"flex flex-col gap-4"}
+            >
+              {({ item: demo, isSelected, onSelect }) => (
+                <ArrowRow
+                  key={demo.id}
+                  isSelected={isSelected}
+                  onSelect={onSelect}
+                  className={cn(
+                    !isSelected && "hover:bg-white/2",
+                    isSelected && "border-2 border-accent-weak/40 rounded-lg",
+                  )}
+                >
+                  <DemoCard {...demo} onSelectDemo={setSelectedDemo} />
+                </ArrowRow>
+              )}
+            </ArrowList>
+          </div>
+        )}
       </section>
     </div>
   );
