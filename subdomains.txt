@@ -1,6 +1,6 @@
-a2zblocks.com                 → marketing site
-docs.a2zblocks.com            → documentation portal
-demo.a2zblocks.com            → live UI demos
+a2zb.com                 → marketing site
+docs.a2zb.com            → documentation portal
+demo.a2zb.com            → live UI demos
 ------------
 
 monorepo basics

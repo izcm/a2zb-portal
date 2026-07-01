@@ -41,7 +41,7 @@ export const DemoCard = ({
         {/* BUILD WITH */}
         {composedOf && (
           <p className="text-xs text-neutral-500">
-            composed of:{" "}
+            Composed of:{" "}
             {composedOf.map((demoId, i) => (
               <span key={demoId}>
                 <button
@@ -79,13 +79,16 @@ export const DemoCard = ({
             <IconLink
               key={link.label}
               href={link.label}
-              icon={<Clapperboard className="h-5 text-accent" />}
+              icon={<Clapperboard className="h-5 w-5 text-accent" />}
             >
               {link.label}
             </IconLink>
           ))}
-          <IconLink href={repoLink} icon={<Code className="h-5 text-accent" />}>
-            visit codebase
+          <IconLink
+            href={repoLink}
+            icon={<Code className="h-5 w-5 text-accent" />}
+          >
+            Visit codebase
           </IconLink>
         </div>
       </div>

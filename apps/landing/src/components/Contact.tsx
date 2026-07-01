@@ -1,4 +1,4 @@
-import { siDiscord, siX, siGmail } from "simple-icons";
+import { siDiscord, siGmail } from "simple-icons";
 
 const SiIcon = ({ icon }: { icon: { path: string } }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -42,10 +42,10 @@ const ContactCard = ({ href, icon, platform, handle }: ContactCardProps) => (
 export const Contact = () => (
   <div className="flex flex-col gap-3">
     <ContactCard
-      href="https://discord.com/users/placeholder"
+      href="https://discord.com/users/745594868826505227"
       icon={<SiIcon icon={siDiscord} />}
       platform="Discord"
-      handle="placeholder"
+      handle="@izcm"
     />
     <ContactCard
       href="mailto:placeholder@example.com"

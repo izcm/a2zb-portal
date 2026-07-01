@@ -23,6 +23,6 @@ export const IconLink = ({
       {icon}
       {children}
     </span>
-    <ExternalLink className="h-4 shrink-0 text-accent" />
+    <ExternalLink className="h-4 w-4 shrink-0 text-accent" />
   </a>
 );

@@ -71,7 +71,7 @@ export const demos: Demo[] = [
     repoLink: "https://github.com/izcm/dmrkt-demo",
     composedOf: ["marketplace-simulation", "nft-indexer", "trading-terminal"],
     extraLinks: [
-      { label: "watch walkthrough", icon: `${iconPaths.links}/youtube.svg` },
+      { label: "Watch walkthrough", icon: `${iconPaths.links}/youtube.svg` },
     ],
     tools: [
       tools.react,

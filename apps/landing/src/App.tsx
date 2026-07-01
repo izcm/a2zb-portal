@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div
       className="
-      max-w-4xl min-h-screen flex flex-col gap-4 justify-between 
+      w-full sm:w-4xl min-h-screen flex flex-col gap-4 justify-between 
       mx-auto fade-in p-8 bg-primary/60"
     >
       {/* HERO */}
@@ -29,8 +29,8 @@ export default function App() {
           h-[180px]
           "
       >
-        <h1 className="hero-title">a2zblocks</h1>
-        <p className="hero-kicker">web3 + full-stack services</p>
+        <h1 className="hero-title">IzBlocks</h1>
+        <p className="hero-kicker">Web3 + full-stack services</p>
       </section>
 
       <section className="flex flex-1 flex-col gap-2">
