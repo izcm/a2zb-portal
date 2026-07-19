@@ -6,6 +6,7 @@ export const iconPaths = {
 export type DemoLink = {
   label: string;
   icon: string;
+  colorTheme: string;
 };
 
 export type DemoIds =
@@ -26,21 +27,20 @@ const tools = {
   fastify: { name: "Fastify", devicon: "fastify" },
   mongo: { name: "MongoDB", devicon: "mongodb" },
   foundry: { name: "Foundry" },
-  viem: { name: "viem" },
-  wagmi: { name: "wagmi" },
+  viem: { name: "Viem" },
+  wagmi: { name: "Wagmi" },
   docker: { name: "Docker", devicon: "docker" },
   solidity: { name: "Solidity", devicon: "solidity" },
-  typescript: { name: "TypeScript", devicon: "typescript" },
+  typescript: { name: "TScript", devicon: "typescript" },
 } satisfies Record<string, Tool>;
 
 const toolOrder: Record<string, number> = {
   React: 1,
   "Node.js": 2,
-  TypeScript: 3,
-  MongoDB: 4,
-  Docker: 5,
-  Fastify: 6,
-  Solidity: 7,
+  MongoDB: 3,
+  Docker: 4,
+  Fastify: 5,
+  Solidity: 6,
 };
 
 export const sortTools = (t: Tool[]): Tool[] => {
@@ -67,11 +67,15 @@ export const demos: Demo[] = [
   {
     id: "dmrkt",
     title: "d | mrkt – A deterministic marketplace simulation",
-    desc: "Generate a set of EIP-712 orders and replay ~1 month of trades.\n Fully dockerized + single command setup.",
+    desc: "Generate a set of EIP-712 orders and replay ~1 month of trades.\n Fully dockerized + single command setup.\n",
     repoLink: "https://github.com/izcm/dmrkt-demo",
     composedOf: ["marketplace-simulation", "nft-indexer", "trading-terminal"],
     extraLinks: [
-      { label: "Watch walkthrough", icon: `${iconPaths.links}/youtube.svg` },
+      {
+        label: "See live",
+        icon: `${iconPaths.links}/youtube.svg`,
+        colorTheme: "#F5C518",
+      },
     ],
     tools: [
       tools.react,

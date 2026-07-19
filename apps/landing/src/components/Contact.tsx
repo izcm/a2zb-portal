@@ -51,7 +51,7 @@ export const Contact = () => (
       href="mailto:placeholder@example.com"
       icon={<SiIcon icon={siGmail} />}
       platform="Email"
-      handle="izcm@a2zb.com"
+      handle="izcm@izblocks.com"
     />
   </div>
 );

@@ -79,15 +79,13 @@ export const DemoCard = ({
             <IconLink
               key={link.label}
               href={link.label}
-              icon={<Clapperboard className="h-5 w-5 text-accent" />}
+              icon={<Clapperboard />}
+              iconClassNames={"text-[#F5C518]/64"}
             >
               {link.label}
             </IconLink>
           ))}
-          <IconLink
-            href={repoLink}
-            icon={<Code className="h-5 w-5 text-accent" />}
-          >
+          <IconLink href={repoLink} icon={<Code />}>
             Visit codebase
           </IconLink>
         </div>
