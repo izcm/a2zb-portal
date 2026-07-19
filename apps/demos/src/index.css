@@ -1,1 +1,2 @@
-@import "../../packages/ui/global.css";
+@import "@a2zb/styles";
+@import "@a2zb/styles/base.css";
