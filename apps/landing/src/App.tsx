@@ -28,7 +28,7 @@ export default function App() {
       <section
         className="
           flex flex-col justify-end gap-2 
-          h-[160px]
+          h-[132px]
           "
       >
         <h1 className="text-4xl font-semibold">IzBlocks</h1>
