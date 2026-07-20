@@ -28,22 +28,7 @@ body {
 
 @theme {
   --color-pop: #49ca8a;
-
-  /* tech */
-  --color-tech-node: #49ca8a;
-  --color-tech-mongo: #49ca8a;
-  --color-tech-docker: #66b6ff;
-  --color-tech-fastify: #b8bfd6;
-  --color-tech-foundry: #d9b36a;
-
-  --color-tech-typescript: #79a8ff;
-  --color-tech-react: #7fdfff;
-  --color-tech-solidity: #b9bfd6;
-  --color-tech-ethereum: #a58cff;
-  --color-tech-bash: #8fd4a8;
-
-  /* social */
-  --color-youtube: #ff5c73;
+  --color-gold: #e0c468;
 }
 
 .btn-extra {

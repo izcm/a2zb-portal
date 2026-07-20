@@ -1,22 +1,16 @@
 import { cn } from "../lib/cn";
 import { ExternalLink } from "../lib/icons";
 
-type IconLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  icon: React.ReactNode;
-};
+export const DEFAULT_ICON_CLASSES =
+  "flex items-center h-4 w-4 shrink-0 text-accent";
 
-export function IconLink({
-  icon,
-  children,
-  className,
-  iconClassNames,
-  ...props
-}: IconLinkProps & { iconClassNames?: string }) {
-  const defaultIconClassnames =
-    "flex items-center h-4 w-4 shrink-0 text-accent";
+type IconLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
+export function IconLink({ children, className, ...props }: IconLinkProps) {
   return (
     <a
+      target="_blank"
+      rel="noopener noreferrer"
       {...props}
       className={cn(
         "flex items-center justify-between gap-3 w-full",
@@ -24,13 +18,8 @@ export function IconLink({
         className,
       )}
     >
-      <span className="flex items-center gap-3">
-        <span className={cn(defaultIconClassnames, iconClassNames)}>
-          {icon}
-        </span>
-        {children}
-      </span>
-      <ExternalLink className={cn(defaultIconClassnames, iconClassNames)} />
+      <span className="flex items-center gap-3">{children}</span>
+      <ExternalLink className={DEFAULT_ICON_CLASSES} />
     </a>
   );
 }

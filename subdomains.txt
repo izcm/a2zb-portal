@@ -1,9 +1,0 @@
-a2zb.com                 → marketing site
-docs.a2zb.com            → documentation portal
-demo.a2zb.com            → live UI demos
-------------
-
-monorepo basics
-pnpm workspace tutorial
-turborepo example
-vercel monorepo deploy

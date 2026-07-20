@@ -20,7 +20,7 @@ const ContactCard = ({ href, icon, platform, handle }: ContactCardProps) => (
     rel="noopener noreferrer"
     className="
       flex items-center gap-4 px-4 py-3 rounded-lg no-underline
-      border border-white/5 bg-white/3
+      border border-soft bg-surface
       transition-all hover:bg-white/6 hover:border-white/10
     "
   >

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ArrowList, ArrowRow } from "@a2zb/react";
+import { ArrowList } from "@a2zb/react";
 
 import { DemoCard } from "./components/cards/DemoCard";
 import { Contact } from "./components/Contact";
@@ -8,6 +8,7 @@ import { Tabs } from "./components/Tabs";
 
 import { demos } from "./data/demos";
 import { cn } from "./lib/cn";
+import { ArrowRow } from "./components/ArrowRow";
 
 export default function App() {
   const tabs = ["demos", "contact"] as const;
@@ -20,8 +21,8 @@ export default function App() {
   return (
     <div
       className="
-      w-full sm:w-4xl min-h-screen flex flex-col gap-4 justify-between 
-      mx-auto fade-in p-8 bg-primary/60"
+      w-full sm:max-w-4xl min-h-screen flex flex-col gap-4 justify-between 
+      mx-auto fade-in p-4 mx-auto bg-primary/60"
     >
       {/* HERO */}
       <section
@@ -63,10 +64,12 @@ export default function App() {
                   key={demo.id}
                   isSelected={isSelected}
                   onSelect={onSelect}
-                  className={cn(
-                    !isSelected && "hover:bg-white/2",
-                    isSelected && "border-2 border-accent-weak/40 rounded-lg",
+                  onEnter={() => (
+                    window.open(demo.liveUrl ?? demo.repoLink),
+                    "_blank",
+                    "norefferer"
                   )}
+                  className={cn(!isSelected && "bg-surface/80")}
                 >
                   <DemoCard {...demo} onSelectDemo={setSelectedDemo} />
                 </ArrowRow>
