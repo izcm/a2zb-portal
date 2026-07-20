@@ -21,17 +21,17 @@ export default function App() {
   return (
     <div
       className="
-      w-full sm:max-w-4xl min-h-screen flex flex-col gap-4 justify-between 
+      w-full sm:max-w-4xl min-h-screen flex flex-col gap-8 justify-between 
       mx-auto fade-in p-4 mx-auto bg-primary/60"
     >
       {/* HERO */}
       <section
         className="
-          flex flex-col justify-center gap-2 
-          h-[180px]
+          flex flex-col justify-end gap-2 
+          h-[160px]
           "
       >
-        <h1 className="hero-title">IzBlocks</h1>
+        <h1 className="text-4xl font-semibold">IzBlocks</h1>
         <p className="hero-kicker">Web3 + full-stack services</p>
       </section>
 

@@ -32,7 +32,7 @@ export function ArrowRow({
 
   const appliedClasses = cn(
     "hover:bg-white/10 rounded-lg bg-surface border border-soft",
-    isSelected && "bg-accent/25",
+    isSelected && "bg-accent/20",
     className,
   );
 
