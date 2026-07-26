@@ -16,19 +16,19 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<"demos" | "contact">("demos");
 
-  const [selected, setSelected] = useState<string | undefined>(undefined);
+  const [selected, setSelected] = useState<string | undefined>(demos[0].id);
 
   return (
     <div
       className="
-      w-full sm:max-w-4xl min-h-screen flex flex-col gap-4 justify-between 
+      w-full sm:max-w-[960px] min-h-screen flex flex-col gap-4 justify-between 
       mx-auto fade-in p-4 mx-auto bg-primary/60"
     >
       {/* HERO */}
       <section
         className="
-          flex flex-col justify-end gap-2 
-          h-36
+          flex flex-col justify-end gap-2
+          h-32
           "
       >
         <h1 className="text-4xl font-semibold">IzBlocks</h1>
@@ -44,7 +44,7 @@ export default function App() {
             setActiveTab(tab);
             setSelected(undefined);
           }}
-          className="w-50 gap-4 flex flex-row"
+          className="w-42 gap-4 flex flex-row"
           direction="horizontal"
         >
           {({ item: tab, isSelected, onSelect }) => (

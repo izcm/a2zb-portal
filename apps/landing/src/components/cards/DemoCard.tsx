@@ -22,7 +22,7 @@ export const DemoCard = ({
   return (
     <div
       className="
-        flex flex-col-reverse sm:flex-row-reverse gap-4
+        flex flex-col-reverse sm:flex-row-reverse gap-6
         border border-white/5 rounded-lg p-4
       "
     >

@@ -64,7 +64,9 @@ export type Demo =
 const marketplaceSimulation: DemoBase = {
   id: "marketplace-simulation",
   title: "Marketplace Simulation",
-  desc: "Generate and replays EIP-712 signed orders against an on-chain marketplace contract.",
+  desc: `A deterministic trading simulator built with Foundry, Bash, and TypeScript.
+      It deploys contracts, derives a flexible set of accounts from a mnemonic, then impersonates them to sign EIP-712 orders and execute them on-chain.
+Runs on a local Anvil fork with replayed activity, or directly on Sepolia.`,
   repoLink: "https://github.com/izcm/market-sim",
   tools: [tools.solidity, tools.foundry, tools.viem],
 };
@@ -72,15 +74,17 @@ const marketplaceSimulation: DemoBase = {
 const nftIndexer: DemoBase = {
   id: "nft-indexer",
   title: "NFT Indexer",
-  desc: "Index NFT transfer events and ownership state from chain into MongoDB.",
+  desc: `Node.js service that subscribes to blockchain events, parses emitted logs, and persists them to MongoDB.
+      Background workers enrich indexed data and poll the chain to backfill NFT mints.
+      The service also exposes an HTTP API for submitting EIP-712 orders along with endpoints for querying indexed data. + a websocket API.`,
   repoLink: "https://github.com/izcm/nft-indexer",
-  tools: [tools.node, tools.mongo, tools.viem],
+  tools: [tools.node, tools.mongo, tools.viem, tools.fastify],
 };
 
 const tradingTerminal: DemoBase = {
   id: "trading-terminal",
   title: "Trading Terminal",
-  desc: "React UI for browsing listings, placing bids, and viewing trade history.",
+  desc: "Next.js trading terminal with wallet connectivity, live order flow, and realtime blockchain updates.",
   repoLink: "https://github.com/izcm/trading-terminal",
   tools: [tools.nextjs, tools.wagmi, tools.viem, tools.tailwind],
 };
@@ -93,7 +97,9 @@ export const demos: Demo[] = [
   {
     id: "dmrkt",
     title: "d | mrkt – A deterministic marketplace simulation",
-    desc: "Generate a set of EIP-712 orders and replay ~1 month of trades.\n Fully dockerized + single command setup.\n",
+    desc: `End-to-end NFT marketplace and chain-activity simulation.
+      Provides a reproducible Web3 sandbox that's fully containerized and spins up in a single command.
+      A live deployment is available on Sepolia.`,
     repoLink: "https://github.com/izcm/dmrkt-demo",
     composedOf: ["marketplace-simulation", "nft-indexer", "trading-terminal"],
     tools: dedupeTools([

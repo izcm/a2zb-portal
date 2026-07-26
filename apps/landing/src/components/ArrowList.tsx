@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import React from "react";
+import React, { useRef } from "react";
 
 type ArrowListProps<T> = {
   items: readonly T[];
@@ -12,7 +12,7 @@ type ArrowListProps<T> = {
     onSelect: () => void;
   }) => ReactNode;
   className?: string;
-  ref?: React.Ref<HTMLUListElement>;
+  ref?: React.RefObject<HTMLUListElement | null>;
   direction?: "vertical" | "horizontal";
   bare?: boolean;
 };
@@ -28,11 +28,12 @@ export function ArrowList<T>({
   direction = "vertical",
   bare,
 }: ArrowListProps<T>) {
-  const base = bare ? "" : "overflow-y-auto no-scrollbar p-1";
+  const base = bare ? "" : "overflow-y-auto no-scrollbar p-1 rounded-lg";
   const [prevKey, nextKey] =
     direction === "horizontal"
       ? ["ArrowLeft", "ArrowRight"]
       : ["ArrowUp", "ArrowDown"];
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   return (
     <ul
@@ -42,8 +43,16 @@ export function ArrowList<T>({
       onFocus={(e) => {
         if (e.target !== e.currentTarget) return;
         if (items.length === 0) return;
-        if (e.relatedTarget && e.currentTarget.contains(e.relatedTarget))
+
+        const cameFromInside =
+          e.relatedTarget && e.currentTarget.contains(e.relatedTarget);
+
+        if (cameFromInside) {
+          previousFocusRef.current?.focus();
           return;
+        }
+
+        previousFocusRef.current = e.relatedTarget as HTMLElement | null;
 
         // if focus moves from outside the element -> focus on:
         // A) last focused item in list

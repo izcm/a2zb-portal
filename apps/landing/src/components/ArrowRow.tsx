@@ -44,7 +44,7 @@ export function ArrowRow({
   const appliedClasses = bareRow
     ? className
     : cn(
-        "hover:bg-white/10 rounded-lg bg-surface border border-soft",
+        "hover:bg-white/8 rounded-lg bg-surface border border-soft",
         isSelected && "bg-accent/20",
         className,
       );
