@@ -82,9 +82,15 @@ export const DemoCard = ({
         </h3>
 
         {/* DESCRIPTION */}
-        <p className="flex-1 text-neutral-400 text-sm leading-loose whitespace-pre-line">
-          {desc}
-        </p>
+        <div className="flex-1 flex flex-col gap-3 text-neutral-400 text-sm leading-relazed">
+          {desc
+            .split("\n")
+            .map((line) => line.trim())
+            .filter(Boolean)
+            .map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+        </div>
 
         {/* BUILD WITH */}
         {composedOf && (

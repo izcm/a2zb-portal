@@ -16,7 +16,7 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<"demos" | "contact">("demos");
 
-  const [selected, setSelected] = useState<string | undefined>(demos[0].id);
+  const [selected, setSelected] = useState<string | undefined>(undefined);
 
   return (
     <div
@@ -44,7 +44,7 @@ export default function App() {
             setActiveTab(tab);
             setSelected(undefined);
           }}
-          className="w-42 gap-4 flex flex-row"
+          className="gap-4 flex flex-row p-1 rounded-none sticky top-0 z-10 bg-primary/80 backdrop-blur"
           direction="horizontal"
         >
           {({ item: tab, isSelected, onSelect }) => (
@@ -53,7 +53,8 @@ export default function App() {
               isSelected={isSelected}
               onSelect={onSelect}
               className={cn(
-                "flex-1 pt-2 text-center transition-colors duration-200 cursor-pointer",
+                "min-w-[80px] pt-2 text-center transition-colors duration-200 cursor-pointer",
+                "focus-visible:bg-accent/10 ring-0",
                 isSelected && "border-t-2 border-accent/60 text-accent",
                 !isSelected &&
                   "hover:border-t-1 border-t-2 border-transparent hover:border-pop/60 hover:border-t-1 text-pop/90",
@@ -81,7 +82,10 @@ export default function App() {
                 onEnter={() =>
                   window.open(contact.href, "_blank", "noreferrer")
                 }
-                className={cn(!isSelected && "bg-surface/80 cursor-pointer")}
+                className={cn(
+                  "scroll-mt-14",
+                  !isSelected && "bg-surface/80 cursor-pointer",
+                )}
               >
                 <ContactCard
                   icon={contact.icon}
@@ -112,7 +116,10 @@ export default function App() {
                     "_blank",
                     "norefferer"
                   )}
-                  className={cn(!isSelected && "bg-surface/80 cursor-pointer")}
+                  className={cn(
+                    "scroll-mt-14",
+                    !isSelected && "bg-surface/80 cursor-pointer",
+                  )}
                 >
                   <DemoCard {...demo} onSelectDemo={setSelected} />
                 </ArrowRow>
