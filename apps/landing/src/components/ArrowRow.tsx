@@ -11,6 +11,7 @@ type ArrowRowProps = {
   className?: string;
   dataId?: string;
   dataTestId?: string;
+  bare?: boolean;
 };
 
 export function ArrowRow({
@@ -21,20 +22,32 @@ export function ArrowRow({
   className,
   dataId,
   dataTestId,
+  bare: bareRow,
 }: ArrowRowProps) {
   const ref = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
+    const li = ref.current;
+    if (!li) return;
+
+    li.querySelectorAll<HTMLElement>(
+      "a, button, input, select, textarea, [tabindex]",
+    ).forEach((el) => {
+      el.tabIndex = isSelected ? 0 : -1;
+    });
+
     if (isSelected) {
-      ref.current?.focus();
+      li.focus();
     }
   }, [isSelected]);
 
-  const appliedClasses = cn(
-    "hover:bg-white/10 rounded-lg bg-surface border border-soft",
-    isSelected && "bg-accent/20",
-    className,
-  );
+  const appliedClasses = bareRow
+    ? className
+    : cn(
+        "hover:bg-white/10 rounded-lg bg-surface border border-soft",
+        isSelected && "bg-accent/20",
+        className,
+      );
 
   return (
     <li
@@ -44,13 +57,9 @@ export function ArrowRow({
       tabIndex={isSelected ? 0 : -1}
       onClick={onEnter ?? onSelect}
       onKeyDown={(e) => {
-        if (!onEnter) return;
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && onEnter) {
           e.preventDefault();
           onEnter();
-        } else if (e.key === " ") {
-          e.preventDefault();
-          onSelect();
         }
       }}
       className={appliedClasses}

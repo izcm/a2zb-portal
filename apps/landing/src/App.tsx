@@ -1,34 +1,34 @@
 import { useState } from "react";
 
-import { ArrowList } from "@a2zb/react";
+import { cn } from "./lib/cn";
+
+import { ArrowList } from "./components/ArrowList";
+import { ArrowRow } from "./components/ArrowRow";
 
 import { DemoCard } from "./components/cards/DemoCard";
-import { Contact } from "./components/Contact";
-import { Tabs } from "./components/Tabs";
+import { ContactCard } from "./components/Contact";
 
 import { demos } from "./data/demos";
-import { cn } from "./lib/cn";
-import { ArrowRow } from "./components/ArrowRow";
+import { contacts } from "./data/contacts";
 
 export default function App() {
   const tabs = ["demos", "contact"] as const;
 
   const [activeTab, setActiveTab] = useState<"demos" | "contact">("demos");
-  const [selectedDemo, setSelectedDemo] = useState<string | undefined>(
-    undefined,
-  );
+
+  const [selected, setSelected] = useState<string | undefined>(undefined);
 
   return (
     <div
       className="
-      w-full sm:max-w-4xl min-h-screen flex flex-col gap-8 justify-between 
+      w-full sm:max-w-4xl min-h-screen flex flex-col gap-4 justify-between 
       mx-auto fade-in p-4 mx-auto bg-primary/60"
     >
       {/* HERO */}
       <section
         className="
           flex flex-col justify-end gap-2 
-          h-[132px]
+          h-36
           "
       >
         <h1 className="text-4xl font-semibold">IzBlocks</h1>
@@ -36,27 +36,70 @@ export default function App() {
       </section>
 
       <section className="flex flex-1 flex-col gap-2">
-        <Tabs
-          value={activeTab}
+        <ArrowList
           items={tabs}
-          classNames={{
-            container: "w-1/4 gap-4 px-2",
-            active: "border-t-2 border-b-0",
-            inactive:
-              "hover:border-t-1 hover:border-pop/60 hover:border-t-1 border-pop text-pop",
+          getId={(tab) => tab}
+          selectedId={activeTab}
+          onSelect={(tab) => {
+            setActiveTab(tab);
+            setSelected(undefined);
           }}
-          onChange={(v) => setActiveTab(v)}
-        />
+          className="w-50 gap-4 flex flex-row"
+          direction="horizontal"
+        >
+          {({ item: tab, isSelected, onSelect }) => (
+            <ArrowRow
+              key={tab}
+              isSelected={isSelected}
+              onSelect={onSelect}
+              className={cn(
+                "flex-1 pt-2 text-center transition-colors duration-200 cursor-pointer",
+                isSelected && "border-t-2 border-accent/60 text-accent",
+                !isSelected &&
+                  "hover:border-t-1 border-t-2 border-transparent hover:border-pop/60 hover:border-t-1 text-pop/90",
+              )}
+              bare
+            >
+              {tab}
+            </ArrowRow>
+          )}
+        </ArrowList>
 
-        {activeTab === "contact" && <Contact />}
+        {activeTab === "contact" && (
+          <ArrowList
+            items={contacts}
+            getId={(contact) => contact.id}
+            selectedId={selected}
+            onSelect={(contact) => setSelected(contact.id)}
+            className="flex flex-col gap-3"
+          >
+            {({ item: contact, isSelected, onSelect }) => (
+              <ArrowRow
+                key={contact.id}
+                isSelected={isSelected}
+                onSelect={onSelect}
+                onEnter={() =>
+                  window.open(contact.href, "_blank", "noreferrer")
+                }
+                className={cn(!isSelected && "bg-surface/80 cursor-pointer")}
+              >
+                <ContactCard
+                  icon={contact.icon}
+                  platform={contact.platform}
+                  handle={contact.handle}
+                />
+              </ArrowRow>
+            )}
+          </ArrowList>
+        )}
 
         {activeTab === "demos" && (
           <div className="flex flex-col">
             <ArrowList
               items={demos}
               getId={(demo) => demo.id}
-              selectedId={selectedDemo}
-              onSelect={(demo) => setSelectedDemo(demo.id)}
+              selectedId={selected}
+              onSelect={(demo) => setSelected(demo.id)}
               className={"flex flex-col gap-4"}
             >
               {({ item: demo, isSelected, onSelect }) => (
@@ -69,9 +112,9 @@ export default function App() {
                     "_blank",
                     "norefferer"
                   )}
-                  className={cn(!isSelected && "bg-surface/80")}
+                  className={cn(!isSelected && "bg-surface/80 cursor-pointer")}
                 >
-                  <DemoCard {...demo} onSelectDemo={setSelectedDemo} />
+                  <DemoCard {...demo} onSelectDemo={setSelected} />
                 </ArrowRow>
               )}
             </ArrowList>

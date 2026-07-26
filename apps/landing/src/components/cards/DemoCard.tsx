@@ -22,51 +22,10 @@ export const DemoCard = ({
   return (
     <div
       className="
-        flex flex-col sm:flex-row gap-4
+        flex flex-col-reverse sm:flex-row-reverse gap-4
         border border-white/5 rounded-lg p-4
-        cursor-pointer 
       "
     >
-      {/* TEXT INFO (LEFT) */}
-      <div className="flex flex-col flex-1 min-w-0 text-start">
-        <h3 className="text-white tracking-tight mb-2">
-          {title}
-          {isLive && (
-            <span className="ml-3">
-              <LiveBadge />
-            </span>
-          )}
-        </h3>
-
-        {/* DESCRIPTION */}
-        <p className="flex-1 text-neutral-400 text-sm leading-loose whitespace-pre-line">
-          {desc}
-        </p>
-
-        {/* BUILD WITH */}
-        {composedOf && (
-          <p className="text-xs text-neutral-500">
-            Composed of:{" "}
-            {composedOf.map((demoId, i) => (
-              <span key={demoId}>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onSelectDemo?.(demoId);
-                  }}
-                  className="text-neutral-400 hover:text-white transition-colors cursor-pointer"
-                >
-                  {demoId}
-                </button>
-                {i < composedOf.length - 1 && (
-                  <span className="mx-1 text-neutral-600">·</span>
-                )}
-              </span>
-            ))}
-          </p>
-        )}
-      </div>
-
       {/* LINKS & TOOL-BADGES (RIGHT) */}
       <div className="flex flex-col justify-between gap-8 px-1 sm:w-1/3 min-w-0">
         {/* TOOLS */}
@@ -109,6 +68,46 @@ export const DemoCard = ({
             Visit codebase
           </IconLink>
         </div>
+      </div>
+
+      {/* TEXT INFO (LEFT) */}
+      <div className="flex flex-col flex-1 min-w-0 text-start">
+        <h3 className="text-white tracking-tight mb-2">
+          {title}
+          {isLive && (
+            <span className="ml-3">
+              <LiveBadge />
+            </span>
+          )}
+        </h3>
+
+        {/* DESCRIPTION */}
+        <p className="flex-1 text-neutral-400 text-sm leading-loose whitespace-pre-line">
+          {desc}
+        </p>
+
+        {/* BUILD WITH */}
+        {composedOf && (
+          <p className="text-xs text-neutral-500">
+            Composed of:{" "}
+            {composedOf.map((demoId, i) => (
+              <span key={demoId}>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectDemo?.(demoId);
+                  }}
+                  className="text-neutral-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  {demoId}
+                </button>
+                {i < composedOf.length - 1 && (
+                  <span className="mx-1 text-neutral-600">·</span>
+                )}
+              </span>
+            ))}
+          </p>
+        )}
       </div>
     </div>
   );
