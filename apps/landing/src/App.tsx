@@ -22,7 +22,7 @@ export default function App() {
     <div
       className="
       w-full sm:max-w-[960px] min-h-screen flex flex-col gap-4 justify-between 
-      mx-auto fade-in p-4 mx-auto bg-primary/60"
+      mx-auto fade-in p-2 mx-auto bg-primary/60"
     >
       {/* HERO */}
       <section
