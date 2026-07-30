@@ -38,8 +38,8 @@ export const DemoCard = ({
           }))}
           breakpoints={[
             { cols: 5, maxWidth: 450 },
-            { cols: 7, minWidth: 451, maxWidth: 768 },
-            { cols: 4, minWidth: 769 },
+            { cols: 7, minWidth: 451, maxWidth: 767 },
+            { cols: 4, minWidth: 768 },
           ]}
         />
 
