@@ -22,7 +22,7 @@ export const DemoCard = ({
   return (
     <div
       className="
-        flex flex-col-reverse sm:flex-row-reverse gap-6
+        flex flex-col-reverse sm:flex-row-reverse gap-4
         border border-white/5 rounded-lg p-4
       "
     >
@@ -71,7 +71,7 @@ export const DemoCard = ({
       </div>
 
       {/* TEXT INFO (LEFT) */}
-      <div className="flex flex-col flex-1 min-w-0 text-start">
+      <div className="flex flex-col flex-1 min-w-0 gap-3 text-start">
         <h3 className="text-white tracking-tight mb-2">
           {title}
           {isLive && (

@@ -1,15 +1,44 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { IconBadge } from "../badges/IconBadge";
 
 type Breakpoint = { cols: number; minWidth?: number; maxWidth?: number };
+
+function OverflowBadge({ names }: { names: string[] }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span
+      className="relative"
+      title={names.join(", ")}
+      onClick={(e) => {
+        e.stopPropagation();
+        if (window.matchMedia("(hover: hover)").matches) return;
+        setOpen((prev) => !prev);
+      }}
+    >
+      <IconBadge label="others" icon={`+${names.length}`} />
+      {open && (
+        <div
+          className="
+            absolute bottom-full right-0 mb-2 z-10
+            w-max max-w-[12rem] px-2 py-1 rounded
+            bg-black/90 border border-soft/16
+            text-xs text-neutral-300 text-center
+          "
+        >
+          {names.join(", ")}
+        </div>
+      )}
+    </span>
+  );
+}
 
 function splitForOverflow(items: IconBadge[], cols: number) {
   const hidden = items.length > cols ? items.length % cols : 0;
   const visible = items.slice(0, items.length - hidden);
   const visibleWithSlotForOverflow =
     hidden > 0 ? visible.slice(0, visible.length - 1) : visible;
-  const hiddenCount = hidden > 0 ? hidden + 1 : hidden;
-  return { visibleWithSlotForOverflow, hidden, hiddenCount };
+  return { visibleWithSlotForOverflow, hidden };
 }
 
 export function IconBadgeGroup({
@@ -39,8 +68,10 @@ export function IconBadgeGroup({
     <>
       <style>{css}</style>
       {breakpoints.map((bp, i) => {
-        const { visibleWithSlotForOverflow, hidden, hiddenCount } =
-          splitForOverflow(items, bp.cols);
+        const { visibleWithSlotForOverflow, hidden } = splitForOverflow(
+          items,
+          bp.cols,
+        );
         return (
           <div
             key={i}
@@ -54,14 +85,11 @@ export function IconBadgeGroup({
               <IconBadge key={item.label} label={item.label} icon={item.icon} />
             ))}
             {hidden > 0 && (
-              <span
-                title={items
+              <OverflowBadge
+                names={items
                   .slice(visibleWithSlotForOverflow.length)
-                  .map((item) => item.label)
-                  .join(", ")}
-              >
-                <IconBadge label="others" icon={`+${hiddenCount}`} />
-              </span>
+                  .map((item) => item.label)}
+              />
             )}
           </div>
         );
