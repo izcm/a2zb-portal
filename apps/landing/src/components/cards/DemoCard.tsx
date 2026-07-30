@@ -22,12 +22,12 @@ export const DemoCard = ({
   return (
     <div
       className="
-        flex flex-col-reverse sm:flex-row-reverse gap-4
+        flex flex-col-reverse md:flex-row-reverse gap-4
         border border-white/5 rounded-lg p-4
       "
     >
       {/* LINKS & TOOL-BADGES (RIGHT) */}
-      <div className="flex flex-col justify-between gap-8 px-1 sm:w-1/3 min-w-0">
+      <div className="flex flex-col justify-between gap-6 px-1 md:w-1/3 min-w-0">
         {/* TOOLS */}
         <IconBadgeGroup
           items={sortTools(tools).map((tool) => ({
@@ -38,8 +38,7 @@ export const DemoCard = ({
           }))}
           breakpoints={[
             { cols: 5, maxWidth: 450 },
-            { cols: 7, minWidth: 451, maxWidth: 639 },
-            { cols: 3, minWidth: 640, maxWidth: 768 },
+            { cols: 7, minWidth: 451, maxWidth: 768 },
             { cols: 4, minWidth: 769 },
           ]}
         />
