@@ -71,7 +71,7 @@ export const DemoCard = ({
 
       {/* TEXT INFO (LEFT) */}
       <div className="flex flex-col flex-1 min-w-0 gap-3 text-start">
-        <h3 className="text-white tracking-tight mb-2">
+        <h3 className="text-white tracking-tight">
           {title}
           {isLive && (
             <span className="ml-3">
