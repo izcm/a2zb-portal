@@ -27,6 +27,7 @@ const tools = {
   docker: { name: "Docker", devicon: "docker" },
   solidity: { name: "Solidity", devicon: "solidity" },
   tailwind: { name: "Tailwind", devicon: "tailwindcss" },
+  yul: { name: "Yul" },
 } as const;
 
 const toolOrder: Record<string, number> = {
@@ -85,9 +86,19 @@ const nftIndexer: DemoBase = {
 const tradingTerminal: DemoBase = {
   id: "trading-terminal",
   title: "Trading Terminal",
-  desc: "Next.js trading terminal with wallet connectivity, live order flow, and realtime blockchain updates.",
+  desc: `Next.js trading terminal with wallet connectivity, live order flow, and realtime blockchain updates. 
+      The application is keyboard-first and multi-themed. `,
   repoLink: "https://github.com/izcm/trading-terminal",
   tools: [tools.nextjs, tools.wagmi, tools.viem, tools.tailwind],
+};
+
+const miniNFT: DemoBase = {
+  id: "miniNFT",
+  title: "MiniNFT",
+  desc: `Educational NFT implemented in Yul to explore the EVM at the opcode level.
+      Not ERC-721 compliant by design, featuring bit-packed storage, custom errors, and on-chain SVGs.`,
+  repoLink: "https://github.com/izcm/yul-miniNFT",
+  tools: [tools.solidity, tools.foundry, tools.yul],
 };
 
 const dedupeTools = (t: Tool[]): Tool[] => [
@@ -114,4 +125,5 @@ export const demos: Demo[] = [
   marketplaceSimulation,
   nftIndexer,
   tradingTerminal,
+  miniNFT,
 ];

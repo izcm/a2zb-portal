@@ -52,6 +52,7 @@ export default function App() {
               key={tab}
               isSelected={isSelected}
               onSelect={onSelect}
+              focusOnMount={false}
               className={cn(
                 "min-w-[80px] pt-2 text-center transition-colors duration-200 cursor-pointer",
                 "focus-visible:bg-accent/10 ring-0",

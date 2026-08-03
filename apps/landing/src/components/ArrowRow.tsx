@@ -12,6 +12,7 @@ type ArrowRowProps = {
   dataId?: string;
   dataTestId?: string;
   bare?: boolean;
+  focusOnMount?: boolean;
 };
 
 export function ArrowRow({
@@ -23,8 +24,10 @@ export function ArrowRow({
   dataId,
   dataTestId,
   bare: bareRow,
+  focusOnMount = true,
 }: ArrowRowProps) {
   const ref = useRef<HTMLLIElement>(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
     const li = ref.current;
@@ -36,10 +39,11 @@ export function ArrowRow({
       el.tabIndex = isSelected ? 0 : -1;
     });
 
-    if (isSelected) {
+    if (isSelected && (focusOnMount || !isInitialMount.current)) {
       li.focus();
     }
-  }, [isSelected]);
+    isInitialMount.current = false;
+  }, [isSelected, focusOnMount]);
 
   const appliedClasses = bareRow
     ? className
